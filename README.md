@@ -17,7 +17,8 @@ de negocio apropiadas para la gestión, identificación y control de usarios.
 |No.|Fecha |Descripción|Potenciador|Estatus|
 |---|------|-----------|-----------|-------|
 |8.|17/10/2024|Nuevo Repositorio del Proyecto implementando .gitignore|1|Finalizada|
-|9.|22/10/2024|Creacion de una aplicacion Web usando Express|12|Activa|
+|9.|22/10/2024|Creacion de una aplicacion Web usando Express|12|Finalizada|
+|9.|23/10/2024|Operaciones Basicas de una API a traves de los verbos HTTP|0|Activa|
 
 ### Tech Stack
 ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
