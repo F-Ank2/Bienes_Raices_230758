@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "saluda": "node saluda.js",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "css" : "postcss public/css/tailwind.css -o public/css/app.css"
   },
   "repository": {
     "type": "git",
