@@ -1,4 +1,5 @@
 import express, { response } from 'express';
+import {formularioLogin, formularioRegistrer, formulariopassRecovery} from '../controllers/userController.js'
 
 const router = express.Router();
 
@@ -45,4 +46,7 @@ router.get("/FindById/:Id" ,function (request, response){
         mota.send(`se esta solicitando eliminar el usuario ${pko.params.name}`);
         })
 
+router.get("/login", formularioLogin)
+router.get("/createAcount", )
+router.get("/passwordRecovery", formularioLogin)
 export default router;

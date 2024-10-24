@@ -1,3 +1,4 @@
+import express from 'express'
 import generalRoutes from './routes/generalRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 // ? Ejemplo de activacion de HOT RELOAD
@@ -7,9 +8,12 @@ import userRoutes from './routes/userRoutes.js'
 // ? Importar la libreria para crear un servidor web - CommonJS / ECMA Script 6
 // ? Instanciar nuestra aplicacion web
 
-import express from 'express'
-
 const app = express()
+//configurar Templeate Engine - PUG
+app.set('view engine', 'pug')
+app.set('views','./Views')
+
+app.use(express.static('public'))
 
 
 const port = 3000
