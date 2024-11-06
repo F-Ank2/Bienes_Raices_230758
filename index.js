@@ -13,6 +13,10 @@ const app = express()
 app.set('view engine', 'pug')
 app.set('views','./Views')
 
+//Carpeta publica
+app.use(express.static('public'))
+
+//definir el puerto
 const port = 3000 
 
 app.listen(port, () =>

@@ -1,5 +1,5 @@
 import express from 'express';
-import {formularioLogin} from '../controllers/userControllers.js'
+import {formLogin, formCreateAccount, formPasswordRecovery} from '../controllers/userControllers.js'
 
 const router = express.Router();
 
@@ -39,5 +39,7 @@ router.get("/FindById/:Id" ,function (request, response){
         });
 
 
-router.get("/login", formularioLogin)
+router.get("/login", formLogin)
+router.get("/register", formCreateAccount)
+router.get("/recoveryPassword", formPasswordRecovery)
 export default router;
