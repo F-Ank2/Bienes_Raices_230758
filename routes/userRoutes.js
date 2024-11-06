@@ -41,5 +41,5 @@ router.get("/FindById/:Id" ,function (request, response){
 
 router.get("/login", formLogin)
 router.get("/register", formCreateAccount)
-router.get("/recoveryPassword", formPasswordRecovery)
+router.get("/passwordRecovery", formPasswordRecovery)
 export default router;

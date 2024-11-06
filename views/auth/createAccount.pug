@@ -1,1 +1,33 @@
-p Crear una cuenta
+extends ../layout/index
+
+block content
+    div.py-10
+        h1.text-center.text-4xl.my-10.font-extrabold.text-purple-500 Bienes
+            span.font-normal.text-black Raices
+        h2.text-center.text-3xl.font-extrabold= page
+
+        .mt-8.mx-auto.max-w-md
+            .bg-beige.py-8.px-4.shadow
+                form
+                    div
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Nombre:
+                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-40(type="text" placeholder="ej. Francisco Gonzalez" name="name")
+                    br
+                    div
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Correo:
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-40(placeholder="usuario@domain.com" name="email" type="email")
+                    br
+                    div
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold contraseña:
+                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
+                    br
+                    div
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Confirm password:
+                        input#recovery-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="recovery-password" type="password" required)
+                    br
+                    div
+                        input#button_login.w-full.bg-indigo-600.text-white.font-bold.py-3.rounded-xl(class="hover:bg-rojoP cursor-pointer" type="submit" value="Login")
+                    br
+                    div.flex.items-center.justify-between.pt-5
+                        a.text-sm.text-gray-400(href="/auth/login" class="hover:underline decoration-rojoS") ¿Tienes una cuenta?, Inicia sesion
+                        a.text-sm.text-gray-400(href="/auth/passwordRecovery" class="hover:underline decoration-rojoS") ¿Olvidaste tu contraseña?, Recuperala
