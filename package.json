@@ -34,7 +34,9 @@
   "homepage": "https://github.com/F-Ank2/Bienes_Raices_Backup#readme",
   "dependencies": {
     "express": "^4.21.1",
-    "pug": "^3.0.3"
+    "mysql2": "^3.11.4",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

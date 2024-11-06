@@ -1,5 +1,6 @@
 import generalRoutes from './routes/generalRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import db from './config/db.js'
 import express from 'express'
 // ? Ejemplo de activacion de HOT RELOAD
 //console.log("Hola desde NodeJS, esto esta en hot reload")
@@ -8,6 +9,14 @@ import express from 'express'
 // ? Instanciar nuestra aplicacion web
 
 const app = express()
+
+//conexion a la base de datos
+try{
+    await db.authenticate();
+    console.log('conexión correcta a la base de datos')
+}catch (error){
+    console.log(error);
+}
 
 //Habilitar PUG
 app.set('view engine', 'pug')
