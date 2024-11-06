@@ -4,10 +4,10 @@
   "description": "Proyecto de Clase para la unidad 2 de AWOS, utilizando Node.js",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "saluda": "node saluda.js",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch"
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,14 @@
   },
   "homepage": "https://github.com/F-Ank2/Bienes_Raices_Backup#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "pug": "^3.0.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.7",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.14"
   }
 }
