@@ -4,7 +4,6 @@
   "description": "Proyecto de Clase para la unidad 2 de AWOS, utilizando Node.js",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "saluda": "node saluda.js",
     "server": "nodemon index.js"
@@ -33,7 +32,8 @@
   },
   "homepage": "https://github.com/F-Ank2/Bienes_Raices_Backup#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "pug": "^3.0.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

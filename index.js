@@ -9,6 +9,10 @@ import express from 'express'
 
 const app = express()
 
+//Habilitar PUG
+app.set('view engine', 'pug')
+app.set('views','./Views')
+
 const port = 3000 
 
 app.listen(port, () =>
@@ -22,5 +26,6 @@ app.get('/hola', function(req, res){
     res.json({msg: 'Hola desde la web en NodeJS'})
 })
 
+//Routing
 app.use("/",generalRoutes);
-app.use("/user/", userRoutes);
+app.use("/auth/", userRoutes);

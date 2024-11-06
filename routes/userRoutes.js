@@ -1,4 +1,5 @@
 import express from 'express';
+import {formularioLogin} from '../controllers/userControllers.js'
 
 const router = express.Router();
 
@@ -35,5 +36,8 @@ router.get("/FindById/:Id" ,function (request, response){
 //DELETE
     router.delete("/deleteUser/:name", function (pko, mota){
         mota.send(`se esta solicitando eliminar el usuario ${pko.params.name}`);
-        })
+        });
+
+
+router.get("/login", formularioLogin)
 export default router;
