@@ -1,4 +1,5 @@
 import generalRoutes from './routes/generalRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import express from 'express'
 // ? Ejemplo de activacion de HOT RELOAD
 //console.log("Hola desde NodeJS, esto esta en hot reload")
@@ -21,4 +22,5 @@ app.get('/hola', function(req, res){
     res.json({msg: 'Hola desde la web en NodeJS'})
 })
 
-app.use('/', generalRoutes);  
+app.use("/",generalRoutes);
+app.use("/user/", userRoutes);
