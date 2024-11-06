@@ -12,14 +12,19 @@ const port = 3000
 app.listen(port, () =>
     console.log(`La aplicacion ha iniciado en el puerto: ${port}`))
 // ? Routing - Enrutacion para peticiones
-app.get("/", function(req, res){
-    res.send("Hola desde la web en NodeJS")
+app.get('/', function(req, res){
+    res.send('Hola desde la web en NodeJS')
 })
-app.get("/quienEres", function(req, res){
+
+app.get('/hola', function(req, res){
+    res.json({msg: 'Hola desde la web en NodeJS'})
+})
+
+app.get('/quienEres', function(req, res){
     res.json({
-        "nombre" : "Francisco Garcia Garcia",
-        "carrera" : "TI DSM",
-        "grado" : "4",
-        "grupo" : "A"
+        'nombre' : 'Francisco Garcia Garcia',
+        'carrera' : 'TI DSM',
+        'grado' : '4',
+        'grupo' : 'A'
     })
 })
