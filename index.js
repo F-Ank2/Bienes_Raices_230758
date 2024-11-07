@@ -13,7 +13,9 @@ const app = express()
 //conexion a la base de datos
 try{
     await db.authenticate();
-    console.log('conexión correcta a la base de datos')
+    db.sync();
+    console.log('conexión correcta a la base de datos');
+    
 }catch (error){
     console.log(error);
 }
@@ -21,6 +23,10 @@ try{
 //Habilitar PUG
 app.set('view engine', 'pug')
 app.set('views','./Views')
+
+//Habilitar la lectura de datos de un formulario
+app.use( express.urlencoded({extended: true}) )
+
 
 //Carpeta publica
 app.use(express.static('public'))

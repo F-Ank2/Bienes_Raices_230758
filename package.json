@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/F-Ank2/Bienes_Raices_Backup#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mysql2": "^3.11.4",
     "pug": "^3.0.3",

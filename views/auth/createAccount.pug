@@ -1,14 +1,14 @@
 extends ../layout/index
 
-block content
+block content 
     div.py-10
-        h1.text-center.text-4xl.my-10.font-extrabold.text-purple-500 Bienes
-            span.font-normal.text-black Raices
-        h2.text-center.text-3xl.font-extrabold= page
+        h1.text-center.text-4xl.my-10.font-extrabold(style="color: #708090") Bienes
+            span.font-normal(style="color: #000000") Raices
+        h2.text-center.text-3xl.font-extrabold(style="color: #000000")= page
 
         .mt-8.mx-auto.max-w-md
-            .bg-beige.py-8.px-4.shadow
-                form
+            .bg-white.py-8.px-4.shadow-x1.rounded-lg(style="background-color: #D3D3D3")
+                form(method="POST" action="/auth/register")
                     div
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Nombre:
                         input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-40(type="text" placeholder="ej. Francisco Gonzalez" name="name")
@@ -26,8 +26,8 @@ block content
                         input#recovery-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="recovery-password" type="password" required)
                     br
                     div
-                        input#button_login.w-full.bg-indigo-600.text-white.font-bold.py-3.rounded-xl(class="hover:bg-rojoP cursor-pointer" type="submit" value="Login")
+                        input#button_login.w-full.bg-indigo-600.text-white.font-bold.py-3.rounded-xl(type="submit"  value="register" class="w-full font-bold py-3 rounded-xl cursor-pointer" style="background-color: #708090; color: #FFFFFF")
                     br
                     div.flex.items-center.justify-between.pt-5
-                        a.text-sm.text-gray-400(href="/auth/login" class="hover:underline decoration-rojoS") ¿Tienes una cuenta?, Inicia sesion
-                        a.text-sm.text-gray-400(href="/auth/passwordRecovery" class="hover:underline decoration-rojoS") ¿Olvidaste tu contraseña?, Recuperala
+                        a.text-sm(style="color: #00000")(href="/auth/login" class="hover:underline decoration-rojoS") ¿Tienes una cuenta?, Inicia sesion
+                        a.text-sm(style="color: #00000")(href="/auth/passwordRecovery" class="hover:underline decoration-rojoS") ¿Olvidaste tu contraseña?, Recuperala
