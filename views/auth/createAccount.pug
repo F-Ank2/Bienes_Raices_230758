@@ -2,32 +2,39 @@ extends ../layout/index
 
 block content 
     div.py-10
-        h1.text-center.text-4xl.my-10.font-extrabold(style="color: #708090") Bienes
-            span.font-normal(style="color: #000000") Raices
-        h2.text-center.text-3xl.font-extrabold(style="color: #000000")= page
+        h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
+            span.font-normal.text-secondary Raices
+        h2.text-center.text-3xl.font-extrabold.text-secondary= page
+        
+        if errors 
+            div(class="max-w-md mx-auto my-10")
+                each error in errors 
+                    p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold= error.msg
 
         .mt-8.mx-auto.max-w-md
-            .bg-white.py-8.px-4.shadow-x1.rounded-lg(style="background-color: #D3D3D3")
+            .bg-neutral.py-8.px-4.shadow-xl.rounded-lg.bg-dark-200
                 form(method="POST" action="/auth/register")
                     div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Nombre:
-                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-40(type="text" placeholder="ej. Francisco Gonzalez" name="name")
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Nombre:
+                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(type="text" placeholder="ej. Francisco Gonzalez" name="name" value=user ? user.name : '')
                     br
                     div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Correo:
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-40(placeholder="usuario@domain.com" name="email" type="email")
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Correo:
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="usuario@domain.com" name="email" type="email" value=user ? user.email : '')
                     br
                     div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold contraseña:
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Contraseña:
                         input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
                     br
                     div
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Confirm password:
-                        input#recovery-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="recovery-password" type="password" required)
+                        input#recovery-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password" required)
                     br
                     div
-                        input#button_login.w-full.bg-indigo-600.text-white.font-bold.py-3.rounded-xl(type="submit"  value="register" class="w-full font-bold py-3 rounded-xl cursor-pointer" style="background-color: #708090; color: #FFFFFF")
+                        input#btn-register(type="submit", value="Registar", class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent")
+
                     br
                     div.flex.items-center.justify-between.pt-5
-                        a.text-sm(style="color: #00000")(href="/auth/login" class="hover:underline decoration-rojoS") ¿Tienes una cuenta?, Inicia sesion
-                        a.text-sm(style="color: #00000")(href="/auth/passwordRecovery" class="hover:underline decoration-rojoS") ¿Olvidaste tu contraseña?, Recuperala
+                        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/login") ¿Tienes una cuenta?, Inicia sesión
+                        a.text-sm(class="text-secondary hover:underline decoration-rojoS hover:text-accent" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recupérala
+

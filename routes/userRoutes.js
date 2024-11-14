@@ -1,5 +1,5 @@
 import express from 'express';
-import {formLogin, formCreateAccount, formPasswordRecovery, create} from '../controllers/userControllers.js'
+import {formLogin, formCreateAccount, formPasswordRecovery, confirmAccount, create} from '../controllers/userControllers.js'
 
 const router = express.Router();
 
@@ -40,10 +40,8 @@ router.get("/FindById/:Id" ,function (request, response){
 
 
 router.get("/login", formLogin)
-
 router.get("/register", formCreateAccount)
 router.post("/register", create)
-
-
+router.get('/confirm_Account/:token', confirmAccount)
 router.get("/passwordRecovery", formPasswordRecovery)
 export default router;
