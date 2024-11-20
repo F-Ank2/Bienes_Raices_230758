@@ -28,6 +28,7 @@ const registerEmail = async (data) => {
     })
 }
 
+
 export {
     registerEmail
 }

@@ -1,40 +1,55 @@
 extends ../layout/index
 
-block content 
-    div.py-10
-        h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
-            span.font-normal.text-secondary Raices
-        h2.text-center.text-3xl.font-extrabold.text-secondary= page
-        
-        if errors 
-            div(class="max-w-md mx-auto my-10")
-                each error in errors 
-                    p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold= error.msg
+block content
+  div.py-10
+    h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
+      span.font-normal.text-secondary Raices
+    h2.text-center.text-3xl.font-extrabold.text-secondary= page
 
-        .mt-8.mx-auto.max-w-md
-            .bg-neutral.py-8.px-4.shadow-xl.rounded-lg.bg-dark-200
-                form(method="POST" action="/auth/register")
-                    div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Nombre:
-                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(type="text" placeholder="ej. Francisco Gonzalez" name="name" value=user ? user.name : '')
-                    br
-                    div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Correo:
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="usuario@domain.com" name="email" type="email" value=user ? user.email : '')
-                    br
-                    div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Contraseña:
-                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
-                    br
-                    div
-                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold Confirm password:
-                        input#recovery-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password" required)
-                    br
-                    div
-                        input#btn-register(type="submit", value="Registar", class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent")
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+        const closeButtons = document.querySelectorAll('.close-btn');
 
-                    br
-                    div.flex.items-center.justify-between.pt-5
-                        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/login") ¿Tienes una cuenta?, Inicia sesión
-                        a.text-sm(class="text-secondary hover:underline decoration-rojoS hover:text-accent" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recupérala
+        closeButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const errorDiv = button.closest('div');
+            if (errorDiv) {
+              errorDiv.remove();
+            }
+          });
+        });
+      });
 
+    if errors
+      div(class="max-w-md mx-auto my-10 space-y-4")
+        each error, index in errors
+          div(class="flex items-center bg-red-600 text-white uppercase text-xs text-center p-4 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105" id="error-#{index}")
+            p(class="flex-grow font-semibold")= error.msg
+            button(type="button" class="text-white hover:text-red-200 text-lg focus:outline-none close-btn")
+              i.fas.fa-times X
+
+    .mt-8.mx-auto.max-w-md
+      .bg-neutral.py-8.px-4.shadow-xl.rounded-lg.bg-dark-200
+        form(method="POST" action="/auth/register")
+          div
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Nombre:
+            input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(type="text" placeholder="ej. Francisco Gonzalez" name="name" value=user ? user.name : '')
+          br
+          div
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Correo:
+            input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="usuario@domain.com" name="email" type="email" value=user ? user.email : '')
+          br
+          div
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Contraseña:
+            input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
+          br
+          div
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="repeat-password") Confirmar Contraseña:
+            input#repeat-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password" required)
+          br
+          div
+            input#btn-register(type="submit", value="Registrar", class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent")
+          br
+          div.flex.items-center.justify-between.pt-5
+            a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/login") ¿Tienes una cuenta?, Inicia sesión
+            a.text-sm(class="text-secondary hover:underline decoration-rojoS hover:text-accent" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recupérala

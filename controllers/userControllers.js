@@ -74,9 +74,9 @@ const create = async(req, res) => {
     return;*/ 
 
     //Mostrar mensaje de confirmacion
-    res.render('template/mesage', {
+    res.render('template/message', {
         page: 'Cuenta creada',
-        msg: 'Se a enviado un email de confirmación, por favor, ingrese al siguiente enlace'
+        msg: `Se a enviado un email de confirmación a: ${email}, por favor, ingrese al siguiente enlace`
     })
 }
 
@@ -89,7 +89,7 @@ const confirmAccount= async (req, res) => {
     const user = await User.findOne({where: {token}})
     
     if(!user){
-        return res.render('auth/confirm_Account',{
+        return res.render('auth/confirmAccount',{
             page: 'error al confirmar tu cuenta',
             msg: '¡Ups!, algo a salido mal, intentalo de nuevo',
             error: true
