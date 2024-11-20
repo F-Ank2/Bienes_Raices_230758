@@ -1,4 +1,6 @@
 import { check, validationResult } from "express-validator";
+
+
 import { generateId } from "../helpers/tokens.js";
 import { registerEmail } from "../helpers/emails.js";
 import User from "../models/User.js";
@@ -10,8 +12,10 @@ const formLogin = (req, res) =>{
 };
 
 const formCreateAccount = (req, res) =>{
+    
     res.render('auth/createAccount',{
-        page : "Crear una cuenta"
+        page : "Crear una cuenta",
+        csrfToken: req.csrfToken()
     })
 };
 
@@ -89,14 +93,22 @@ const confirmAccount= async (req, res) => {
     const user = await User.findOne({where: {token}})
     
     if(!user){
-        return res.render('auth/confirmAccount',{
+        return res.render('auth/confirm_Account',{
             page: 'error al confirmar tu cuenta',
             msg: '¡Ups!, algo a salido mal, intentalo de nuevo',
             error: true
         })
     }
 
-    //confrimar la cuenta 
+    //confrimar la cuenta
+    user.token = null
+    user.confirmAccount = true
+    await user.save()
+
+    res.render('auth/confirm_Account', {
+        page: 'Cuenta Confirmada',
+        mesage: 'La cuenta se confirmo correctamente',
+    }) 
 }
 
 const formPasswordRecovery = (req, res) =>{

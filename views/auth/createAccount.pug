@@ -30,7 +30,8 @@ block content
 
     .mt-8.mx-auto.max-w-md
       .bg-neutral.py-8.px-4.shadow-xl.rounded-lg.bg-dark-200
-        form(method="POST" action="/auth/register")
+        form(method="POST" action="/auth/register" noValidate)
+          input(type="hidden" name="_csrf" value= csrfToken)
           div
             label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Nombre:
             input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(type="text" placeholder="ej. Francisco Gonzalez" name="name" value=user ? user.name : '')
@@ -41,11 +42,11 @@ block content
           br
           div
             label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Contraseña:
-            input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
+            input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password")
           br
           div
             label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="repeat-password") Confirmar Contraseña:
-            input#repeat-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password" required)
+            input#repeat-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password")
           br
           div
             input#btn-register(type="submit", value="Registrar", class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent")
