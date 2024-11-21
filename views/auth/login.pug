@@ -1,29 +1,26 @@
 extends ../layout/index
 
-block content 
+block content
     div.py-10
         h1.text-center.text-4xl.my-10.font-extrabold(style="color: #708090") Bienes
             span.font-normal(style="color: #000000") Raices
         h2.text-center.text-3xl.font-extrabold(style="color: #000000")= page
 
         .mt-8.mx-auto.max-w-xl
-            .bg-white.py-8.px-4.shadow-x1.rounded-lg(style="background-color: #D3D3D3")
+            .bg-white.py-8.px-4.shadow-xl.rounded-lg(style="background-color: #D3D3D3")
                 form.space-y-5(action="/login" method="POST" noValidate)
-                    div 
-                        label.block.text-sm.uppercase.mb-3.font-bold(for="email" style="color: #000000") Correo: 
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    div
+                        label.block.text-sm.uppercase.mb-3.font-bold(for="email" style="color: #000000") Correo:
                         input#email.w-full.px-3.py-2.border.rounded-sm.placeholder-gray-400(placeholder="user@domain.com" name="email" style="border-color: #D3D3D3; color: #000000")
 
-                    div 
+                    div
                         label.block.text-sm.uppercase.mb-3.font-bold(for="password" style="color: #000000") Contraseña:
                         input#password.w-full.px-3.py-2.border.rounded-sm.placeholder-gray-400(placeholder="*******" name="password" type="password" style="border-color: #D3D3D3; color: #000000")
                     
-                    input#btn-login(
-                        type="submit" 
-                        value="Login"
-                        class="w-full font-bold py-3 rounded-xl cursor-pointer"
-                        style="background-color: #708090; color: #FFFFFF"
-                    )
+                    div 
+                        input#btn-login(type="submit" value="login" class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent")
 
                     div.flex.items-center.justify-between.pt-5
-                        a.text-sm(style="color: #00000")(href="/auth/register" class="hover:underline decoration-black") ¿No tienes una cuenta?, Registrate
-                        a.text-sm(style="color: #00000")(href="/auth/passwordRecovery" class="hover:underline decoration-black") ¿Olvidaste tu contraseña?, Recuperala
+                        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/register") ¿No tienes una cuenta?, Registrate
+                        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recuperala
