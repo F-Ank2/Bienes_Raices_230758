@@ -15,11 +15,11 @@ de negocio apropiadas para la gestión, identificación y control de usarios.
 
 |No.|Fecha|Descripcion|Potenciador|Estatus|
 |--|--|--|--|--|
-|8.|17/10/2024|Nuevo Repositorio del proyecto implementando .gitignore|1|✅Finalizada|
-|9.|22/10/2024|Creacion de una Aplicacion web usando Express|12|✅Finalizada|
-|10.|23/10/2024|Operaciones Basicas de un API a traves de los verbos HTTP|12|✅Finalizada|
-|11.|05/11/2024|Implementacion de las pantallas de registro, logeo y recuperacion de contraseña|13|✅Finalizada|
-|12.|.|.|pendiente|⭐Activa|
+|8.|2024/10/17|Nuevo Repositorio del proyecto implementando .gitignore|1|✅Finalizada|
+|9.|2024/10/22|Creacion de una Aplicacion web usando Express|12|✅Finalizada|
+|10.|2024/10/23|Operaciones Basicas de un API a traves de los verbos HTTP|12|✅Finalizada|
+|11.|2024/11/05|Implementacion de las pantallas de registro, logeo y recuperacion de contraseña|13|✅Finalizada|
+|12.|2024/11/21|Integración de Funcionalidad de Creación de Cuentas de Usuario.|30|✅Finalizada|
 
 
 ### Tech Stack
