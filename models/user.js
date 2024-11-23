@@ -12,10 +12,13 @@ const  User = db.define('users', {
         type: DataTypes.STRING,
         allowNull: false
     },
-
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    birthDate: { 
+        type: DataTypes.DATE,
+        allowNull: true, 
     },
 
     token: DataTypes.STRING,

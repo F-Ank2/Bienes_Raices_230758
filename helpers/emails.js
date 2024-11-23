@@ -25,6 +25,10 @@ const registerEmail = async (data) => {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
+                .image{
+                    display: flex;
+                    justify-content: center;
+                }
                 body {
                     font-family: Arial, sans-serif;
                     background-color: #f9fafb;
@@ -97,7 +101,6 @@ const registerEmail = async (data) => {
                     color: #6b7280;
                 }
 
-        
                 .container {
                     border-top: 4px solid #708090;
                 }
@@ -111,11 +114,24 @@ const registerEmail = async (data) => {
                 </div>
                 <div class="content">
                     <p>¡Hola <strong>${name}</strong>!</p>
-                    <p>Gracias por registrarte en <strong>BienesRaices.com</strong>. Tu cuenta ya está lista. Haz clic en el enlace a continuación para confirmar tu cuenta:</p>
+                    <h2 style="text-align: center; color: #708090;">¡Bienvenido a BienesRaices.com!</h2>
+                    <p>Estamos encantados de que te hayas unido a nuestra comunidad. En BienesRaices.com, nos dedicamos a brindarte las mejores opciones en el mercado de bienes raíces. Ya sea que estés buscando tu hogar ideal o una inversión, ¡estás en el lugar correcto!</p>
+                    <p>¡Gracias por registrarte en <strong>BienesRaices.com</strong>! Tu cuenta ya está lista. Haz clic en el enlace a continuación para confirmar tu cuenta:</p>
                     <div class="button">
                         <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/confirm_Account/${token}">Confirmar cuenta</a>
                     </div>
                     <p style="text-align: center;">Si no era para ti, simplemente ignora este correo.</p>
+                </div>
+
+                <div>
+                    <h3 style="text-align: center;">Atentamente</h3>
+                </div>
+                <div class="image">
+                    <img src="https://xdddd.s3.us-east-2.amazonaws.com/firma.png" alt="firma" width="170px" height="140px">
+                </div>
+                <div>
+                    <h4 style="text-align: center;">Fancisco Garcia Garcia</h4>
+                    <h4 style="text-align: center;">CEO de Bienes Raices</h4>
                 </div>
                 <div class="footer">
                     <p>BienesRaices.com &copy; 2024. Todos los derechos reservados.</p>

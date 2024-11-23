@@ -1,6 +1,6 @@
 extends ../layout/index
 
-block content 
+block content
     input(type="hidden" name="_csrf" value=csrfToken)
     div.py-10
         h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
@@ -8,6 +8,20 @@ block content
         h2.text-center.text-3xl.font-extrabold.text-secondary= page
 
     div(class='bg-neutral shadow py-8 px-4 rounded-lg max-w-md mx-auto')
-        p(class= error ? 'bg-red-500' : 'bg-green-500').py-2.px-5.rounded-lg.w-full.font-bold.text-center.text-white-uppercase=msg
+        p(class= error ? 'bg-red-500' : 'bg-green-500').py-2.px-5.rounded-lg.w-full.font-bold.text-center.text-white-uppercase= msg
         br
-        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/register") < Regresar
+        input#btn-register(type="button", value="Regresar", class="w-full bg-dark text-secondary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent transition-all duration-300 transform hover:scale-105" onclick="window.location.href='http://localhost:3000/auth/login'")
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    footer.bg-dark.py-2.mt-10.mb-5
+        .container.mx-auto.text-center.text-white
+            p.text-sm
+                | &copy; 2024 Bienes Raices. Todos los derechos reservados.
+            div.mt-6
+                a(class="text-white hover:text-accent mr-6" href="") Términos de uso
+                a(class="text-white hover:text-accent" href="") Política de privacidad

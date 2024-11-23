@@ -1,26 +1,41 @@
 extends ../layout/index
 
 block content
-    div.py-10
-        h1.text-center.text-4xl.my-10.font-extrabold(style="color: #708090") Bienes
-            span.font-normal(style="color: #000000") Raices
-        h2.text-center.text-3xl.font-extrabold(style="color: #000000")= page
+    div.flex.justify-center.items-center
+        div.py-9   
+            div.flex.items-center
+                h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
+                    span.font-normal.text-secondary Raices
+                img(src="/assets/logo.png", alt="a", class="ml-5" width="75px" heigh="75px")
+            h2.text-center.text-3xl.font-extrabold.text-secondary= page
+            
+    .mt-7.mx-auto.max-w-2xl
+        div.bg-neutral.py-8.px-8.shadow-5xl.rounded-lg.bg-dark-200.w-full.max-w-4xl(style="font-family: 'Montserrat', sans-serif;")
+            form(action="/login" method="POST" noValidate)
+                input(type="hidden" name="_csrf" value=csrfToken)
 
-        .mt-8.mx-auto.max-w-xl
-            .bg-white.py-8.px-4.shadow-xl.rounded-lg(style="background-color: #D3D3D3")
-                form.space-y-5(action="/login" method="POST" noValidate)
-                    input(type="hidden" name="_csrf" value=csrfToken)
-                    div
-                        label.block.text-sm.uppercase.mb-3.font-bold(for="email" style="color: #000000") Correo:
-                        input#email.w-full.px-3.py-2.border.rounded-sm.placeholder-gray-400(placeholder="user@domain.com" name="email" style="border-color: #D3D3D3; color: #000000")
+                div.mb-5
+                    label.block.text-sm.uppercase.mb-3.font-bold(for="email" style="color: #000000") Correo:
+                    input#email.w-full.px-3.py-2.border.rounded-sm.placeholder-gray-400(placeholder="user@domain.com" name="email" style="border-color: #D3D3D3; color: #000000")
 
-                    div
-                        label.block.text-sm.uppercase.mb-3.font-bold(for="password" style="color: #000000") Contraseña:
-                        input#password.w-full.px-3.py-2.border.rounded-sm.placeholder-gray-400(placeholder="*******" name="password" type="password" style="border-color: #D3D3D3; color: #000000")
-                    
-                    div 
-                        input#btn-login(type="submit" value="login" class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent")
+                div.mb-5
+                    label.block.text-sm.uppercase.mb-3.font-bold(for="password" style="color: #000000") Contraseña:
+                    input#password.w-full.px-3.py-2.border.rounded-sm.placeholder-gray-400(placeholder="*******" name="password" type="password" style="border-color: #D3D3D3; color: #000000")
+                    p.text-xs.text-secondary.mt-2 Tu contraseña debe tener al menos 6 caracteres.
 
-                    div.flex.items-center.justify-between.pt-5
-                        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/register") ¿No tienes una cuenta?, Registrate
-                        a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recuperala
+                div.mb-5
+                    input#btn-login(type="submit" value="login" class="w-full bg-dark text-primary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent transition-all duration-300 transform hover:scale-105")
+                div.mb-5
+                    input(type="checkbox" name="valio" value="grillo")
+                    label(for="valio")   Recordar inicio de sesion. 
+                div.flex.items-center.justify-between.pt-5
+                    a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent transition-all duration-300 transform hover:scale-105" href="/auth/register") ¿No tienes una cuenta?, Regístrate
+                    a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent transition-all duration-300 transform hover:scale-105" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recuperala
+
+    footer.bg-dark.py-6.mt-10
+        .container.mx-auto.text-center.text-white
+            p.text-sm
+                | &copy; 2024 Bienes Raices. Todos los derechos reservados.
+            div.mt-2
+                a(class="text-white hover:text-accent mr-6" href="") Términos de uso
+                a(class="text-white hover:text-accent" href="") Política de privacidad
