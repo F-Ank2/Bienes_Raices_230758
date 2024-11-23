@@ -20,6 +20,7 @@ de negocio apropiadas para la gestión, identificación y control de usarios.
 |10.|2024/10/23|Operaciones Basicas de un API a traves de los verbos HTTP|12|✅Finalizada|
 |11.|2024/11/05|Implementacion de las pantallas de registro, logeo y recuperacion de contraseña|13|✅Finalizada|
 |12.|2024/11/21|Integración de Funcionalidad de Creación de Cuentas de Usuario.|30|✅Finalizada|
+|12.|2024/11/23|Examen Practico de la unidad 2|15%|✅Finalizada|
 
 
 ### Tech Stack
