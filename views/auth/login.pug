@@ -1,14 +1,14 @@
 extends ../layout/index
 
 block content
-    div.py-10
-        h1.text-center.text-4xl.my-10.font-extrabold(style="color: #708090") Bienes
-            span.font-normal(style="color: #000000") Raices
-        h2.text-center.text-3xl.font-extrabold(style="color: #000000")= page
+    div.py-10   
+        h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
+            span.font-normal.text-secondary Raices
+        h2.text-center.text-3xl.font-extrabold.text-secondary= page
 
-        .mt-8.mx-auto.max-w-xl
-            .bg-white.py-8.px-4.shadow-xl.rounded-lg(style="background-color: #D3D3D3")
-                form.space-y-5(action="/login" method="POST" noValidate)
+        .mt-7.mx-auto.max-w-2xl
+        div.bg-neutral.py-8.px-8.shadow-5xl.rounded-lg.bg-dark-200.w-full.max-w-4xl(style="font-family: 'Montserrat', sans-serif;")
+                form(action="/login" method="POST" noValidate)
                     input(type="hidden" name="_csrf" value=csrfToken)
                     div
                         label.block.text-sm.uppercase.mb-3.font-bold(for="email" style="color: #000000") Correo:
@@ -24,3 +24,11 @@ block content
                     div.flex.items-center.justify-between.pt-5
                         a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/register") ¿No tienes una cuenta?, Registrate
                         a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent" href="/auth/passwordRecovery") ¿Olvidaste tu contraseña?, Recuperala
+
+    footer.bg-dark.py-6.mt-10
+        .container.mx-auto.text-center.text-white
+        p.text-sm
+            | &copy; 2024 Bienes Raices. Todos los derechos reservados.
+        div.mt-2
+            a(class="text-white hover:text-accent mr-6" href="") Términos de uso
+            a(class="text-white hover:text-accent" href="") Política de privacidad

@@ -18,10 +18,11 @@ const formCreateAccount = (req, res) => {
 
 const create = async (req, res) => {
     // Validación de campos
-    await check('name').notEmpty().withMessage('El nombre no debe ir vacío, intente de nuevo.').run(req);
-    await check('email').isEmail().withMessage('Por favor, ingrese un correo electrónico válido.').run(req);
-    await check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres.').run(req);
-    await check('repeat-password').custom((value, { req }) => value === req.body.password).withMessage('Las contraseñas no coinciden').run(req);
+    await check('name').notEmpty().withMessage('El nombre no puede ir vacío <img src="/assets/error.png" alt="Error" style="width: 20px; height: 20px; vertical-align: middle; margin-left: 162px; display: inline-block;" />').run(req);
+    await check('email').isEmail().withMessage('Por favor, ingrese un correo electrónico válido. <img src="/assets/error.png" alt="Error" style="width: 20px; height: 20px; vertical-align: middle; margin-left: 10px; display: inline-block;" />').run(req);
+    await check('birthDate').isISO8601().withMessage('La fecha de nacimiento debe ser válida <img src="/assets/error.png" alt="Error" style="width: 20px; height: 20px; vertical-align: middle; margin-left: 85px; display: inline-block;" /> ').run(req)
+    await check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres. <img src="/assets/error.png" alt="Error" style="width: 20px; height: 20px; vertical-align: middle; margin-left: 12px; display: inline-block;" />').run(req);
+    await check('repeat-password').custom((value, { req }) => value === req.body.password).withMessage('Las contraseñas no coinciden <img src="/assets/error.png" alt="Error" style="width: 20px; height: 20px; vertical-align: middle; margin-left: 143px; display: inline-block;" />').run(req);
 
     let result = validationResult(req);
 
@@ -34,23 +35,25 @@ const create = async (req, res) => {
             user: {
                 name: req.body.name,
                 email: req.body.email,
+                birthDate: req.body.birthDate,
             }
         });
     }
 
     // Extraer los datos del formulario
-    const { name, email, password } = req.body;
+    const { name, email, password, birthDate } = req.body;
 
     // Verificar si el usuario ya existe
     const userExist = await User.findOne({ where: { email } });
     if (userExist) {
         return res.render('auth/createAccount', {
             page: "Crear una cuenta",
-            errors: [{ msg: `El usuario ${req.body.name} ya existe` }],
+            errors: [{ msg: `El usuario asociado al correo ${req.body.email} ya existe` }],
             csrfToken: req.csrfToken(),
             user: {
-                name: req.body.name,
-                email: req.body.email,
+                 name,
+                 email,
+                 birthDate
             }
         });
     }
@@ -60,6 +63,7 @@ const create = async (req, res) => {
         name,
         email,
         password,
+        birthDate,
         token: generateId()
     });
 
@@ -95,7 +99,7 @@ const confirmAccount = async (req, res) => {
 
         // Confirmar la cuenta: eliminar el token y marcar la cuenta como confirmada
         user.token = null;
-        user.confirmAccount = true;
+        user.confirm = 1;
         await user.save(); // Guardar los cambios en la base de datos
 
         // Mostrar mensaje de confirmación
