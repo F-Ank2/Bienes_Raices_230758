@@ -1,71 +1,72 @@
 extends ../layout/index
 
 block content
+    div.flex.justify-center.items-center
+        div.py-9   
+            div.flex.items-center
+                h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
+                    span.font-normal.text-secondary Raices
+                img(src="/assets/logo.png", alt="a", class="ml-5" width="75px" heigh="75px")
+            h2.text-center.text-3xl.font-extrabold.text-secondary= page
 
-  div.py-10
-    h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
-      span.font-normal.text-secondary Raices 
-
-    h2.text-center.text-3xl.font-extrabold.text-secondary= page
-
-  if errors
-    style.
-      .fade-error{
-        transition: opacity 1s ease-in-out;
-      }
-    script.
-      setTimeout(function() {
-        const errorMessages = document.querySelectorAll('.fade-error');
-        errorMessages.forEach((message, index) => {
-          setTimeout(() => {
-            message.style.opacity = '0'; 
+    if errors
+      style.
+        .fade-error{
+          transition: opacity 1s ease-in-out;
+        }
+      script.
+        setTimeout(function() {
+          const errorMessages = document.querySelectorAll('.fade-error');
+          errorMessages.forEach((message, index) => {
             setTimeout(() => {
-              message.style.display = 'none'; 
-            }, 1000); 
-          }, index * 2000); 
-        });
-      }, 1500);
+              message.style.opacity = '0'; 
+              setTimeout(() => {
+                message.style.display = 'none'; 
+              }, 1000); 
+            }, index * 2000); 
+          });
+        }, 1500);
 
-  if errors
-    div(class="max-w-md mx-auto my-10")
-      each error in errors
-        p.bg-error.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold.fade-error!= error.msg
+    if errors
+      div(class="max-w-md mx-auto my-10")
+        each error in errors
+          p.bg-error.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold.fade-error(style="font-family: 'Papyrus', 'fantasy'")!= error.msg
 
-  .mt-7.mx-auto.max-w-2xl
-    div.bg-neutral.py-8.px-8.shadow-5xl.rounded-lg.bg-dark-200.w-full.max-w-4xl(style="font-family: 'Montserrat', sans-serif;")
-      form(method="POST" action="/auth/register" noValidate)
-        input(type="hidden" name="_csrf" value=csrfToken)
-        
-        div.mb-5
-          label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Nombre:
-          input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(type="text" placeholder="ej. Francisco Gonzalez" name="name" value=user ? user.name : '')
+    .mt-7.mx-auto.max-w-2xl
+      div.bg-neutral.py-8.px-8.shadow-5xl.rounded-lg.bg-dark-200.w-full.max-w-4xl(style="font-family: 'Montserrat', sans-serif;")
+        form(method="POST" action="/auth/register" noValidate)
+          input(type="hidden" name="_csrf" value=csrfToken)
+          
+          div.mb-5
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Nombre:
+            input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(type="text" placeholder="ej. Francisco Gonzalez" name="name" value=user ? user.name : '')
 
-        div.mb-5
-          label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Correo:
-          input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="usuario@domain.com" name="email" type="email" value=user ? user.email : '')
+          div.mb-5
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Correo:
+            input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="usuario@domain.com" name="email" type="email" value=user ? user.email : '')
 
-        div.mb-5
-          label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Ingresa tu fecha de nacimiento:
-          input#birthDate.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="birthDate" value= user ? user.birthDate : '')
+          div.mb-5
+            label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Ingresa tu fecha de nacimiento:
+            input#birthDate.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="birthDate" value= user ? user.birthDate : '')
 
-        div.mb-5
-          label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Contraseña:
-          input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password")
+          div.mb-5
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Contraseña:
+            input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password")
 
-        div.mb-5
-          label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="repeat-password") Confirmar Contraseña:
-          input#repeat-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password")
+          div.mb-5
+            label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="repeat-password") Confirmar Contraseña:
+            input#repeat-password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.placeholder-gray-400(placeholder="▪▪▪▪▪▪▪▪▪" name="repeat-password" type="password")
 
-        div.mb-5
-          input#btn-register(type="submit", value="Registrar", class="w-full bg-dark text-secondary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent transition-all duration-300 transform hover:scale-105")
-        div.flex.items-center.justify-between.pt-5.mb-5
-          a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent transition-all duration-300 transform hover:scale-105" href="/auth/login")  ¿Tienes una cuenta?, Inicia sesión
-          a.text-sm(class="text-secondary hover:underline decoration-rojoS hover:text-accent transition-all duration-300 transform hover:scale-105" href="/auth/passwordRecovery")  ¿Olvidaste tu contraseña?, Recupérala
+          div.mb-5
+            input#btn-register(type="submit", value="Registrar", class="w-full bg-dark text-secondary font-bold py-3 rounded-xl cursor-pointer hover:bg-accent transition-all duration-300 transform hover:scale-105")
+          div.flex.items-center.justify-between.pt-5.mb-5
+            a.text-sm(class="text-secondary hover:underline decoration-rojoS mr-4 hover:text-accent transition-all duration-300 transform hover:scale-105" href="/auth/login")  ¿Tienes una cuenta?, Inicia sesión
+            a.text-sm(class="text-secondary hover:underline decoration-rojoS hover:text-accent transition-all duration-300 transform hover:scale-105" href="/auth/passwordRecovery")  ¿Olvidaste tu contraseña?, Recupérala
 
-  footer.bg-dark.py-6.mt-10
-    .container.mx-auto.text-center.text-white
-      p.text-sm
-        | &copy; 2024 Bienes Raices. Todos los derechos reservados.
-      div.mt-2
-        a(class="text-white hover:text-accent mr-6" href="") Términos de uso
-        a(class="text-white hover:text-accent" href="") Política de privacidad
+    footer.bg-dark.py-6.mt-10
+      .container.mx-auto.text-center.text-white
+        p.text-sm
+          | &copy; 2024 Bienes Raices. Todos los derechos reservados.
+        div.mt-2
+          a(class="text-white hover:text-accent mr-6" href="") Términos de uso
+          a(class="text-white hover:text-accent" href="") Política de privacidad
