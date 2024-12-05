@@ -1,38 +1,44 @@
 import express from 'express';
-import {formLogin, formCreateAccount, formPasswordRecovery, confirmAccount, create} from '../controllers/userControllers.js'
+import {formLogin, formCreateAccount, formPasswordRecovery, confirmAccount, create, passwordReset, verifyTokenPasswordChange, updatePassword } from '../controllers/userControllers.js'
 
 const router = express.Router();
 
 //EndPoints - son las rutas para acceder a las secciones o funciones de nuestra aplicacion web
 //2 componentes de una peticion, ruta, funcion, callback
 // ":" en una ruta definen de manera posicional los parametros de entrada
-
-//GET - 
+//GET - Se utiliza para la lectura de datos e información del servidor al cliente
 router.get("/FindById/:Id" ,function (request, response){
     response.send(`Se esta solicitando buscar al usuario con ID: ${request.params.Id}`);
 })
 
-//POST - 
+//POST - Se utiliza para el envío de datos e información del cliente al servidor
     router.post("/newUser/:name/:email/:password", function (req, res){
         res.send(` se ha solicitado la creacion de un nuevo usuario de nombre: ${req.params.name},
             asociado al correo electronico ${req.params.email} y con la contraseña ${req.params.password}`);
     })
+
 //PUT - Se utiliza para la actualizacion global de todo el objeto, en este caso la informacion del usuario
     router.put("/replaceUser/:name/:email/:password", function (taco, quesadilla) {
         quesadilla.send(`Se esta solicitando el remplazo de toda la informacion del usuario: ${taco.params.name},
             con el correo electronico ${taco.params.email} y la contraseña ${taco.params.password}`);
     })
+
 //PATCH - Se utiliza para la actualizacion de ciertas propiedades del objeto
     router.patch("/updatePassword/:email/:newPassword/:passwordConfirm", function (a, b){
         const {email, newPassword, passwordConfirm} = a.params //desestructuracion de un objeto
         if (newPassword === passwordConfirm){
             b.send(`Se esta solicitando la actalizacion de la contraseña del usuario del usuario con el correo: ${email},
                 se aceptan los cambios ya que la contraseña y la confirmacion es la misma`);
-        }else{
+                console.log(newPassword);
+                console.log(newPasswordConfirm);
+            }else{
             b.send(`Se esta solicitando la actalizacion de la contraseña del usuario del usuario con el correo: ${email},
                 con la nueva contraseña ${newPassword}, pero se rechaza el cambio dado que su nueva contraseña y su confirmacion no coinciden`);
+                console.log(newPassword);
+                console.log(newPasswordConfirm);
         }
     })
+    
 //DELETE
     router.delete("/deleteUser/:name", function (pko, mota){
         mota.send(`se esta solicitando eliminar el usuario ${pko.params.name}`);
@@ -44,4 +50,9 @@ router.get("/register", formCreateAccount)
 router.post("/register", create)
 router.get('/confirm_Account/:token', confirmAccount)
 router.get("/passwordRecovery", formPasswordRecovery)
+router.post("/passwordRecovery", passwordReset)
+
+//Actualizar contraseña
+router.get("/passwordRecovery/:token", verifyTokenPasswordChange) 
+router.post("/passwordRecovery/:token", updatePassword)
 export default router;

@@ -2,11 +2,16 @@ extends ../layout/index
 
 block content
     input(type="hidden" name="_csrf" value=csrfToken)
-    div.py-10
-        h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
-            span.font-normal.text-secondary Raices
-        h2.text-center.text-3xl.font-extrabold.text-secondary= page
-
+    div.flex.justify-center.items-center
+        div.py-9   
+            div.flex.items-center
+                h1.text-center.text-4xl.my-10.font-extrabold.text-dark Bienes
+                    span.font-normal.text-secondary Raices
+                img(src="/assets/logo.png", alt="a", class="ml-5" width="75px" heigh="75px")
+                
+    div 
+            h2.text-center.text-3xl.font-extrabold.text-secondary= page
+            
     div(class='bg-neutral shadow py-8 px-4 rounded-lg max-w-md mx-auto')
         p(class= error ? 'bg-red-500' : 'bg-green-500').py-2.px-5.rounded-lg.w-full.font-bold.text-center.text-white-uppercase= msg
         br
