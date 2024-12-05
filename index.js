@@ -5,6 +5,9 @@ import csurf from 'csurf';
 import generalRoutes from './routes/generalRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import db from './config/db.js';
+import dotenv from 'dotenv'
+
+dotenv.config({path: '.env'})
 
 // ? Crear la app
 const app = express()

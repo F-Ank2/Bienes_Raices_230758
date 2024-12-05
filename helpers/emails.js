@@ -143,7 +143,150 @@ const registerEmail = async (data) => {
     })
 }
 
+const emailChangePassword = async (userData) => {
+    const transport = nodemailer.createTransport({
+        host: process.env.EMAIL_HOST, 
+        port: process.env.EMAIL_PORT,
+        auth:{
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    })
 
+    //console.log(data)
+    const {email, name, token} = userData
+
+    //Enviar el email
+    await transport.sendMail({
+        from: 'bieneracices-matricula.com',
+        to: email,
+        subject: 'Solicitud de actualización de contraseña en BienesRaíces.com',
+        text: 'Por favor actualiza tu contraseña para ingresar a la plataforma',
+        html: `<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .image{
+                display: flex;
+                justify-content: center;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9fafb;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background: #ffffff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                display: flex;
+                justify-content: space-between ;
+                background-color: #708090;
+                color: #D3D3D3;
+                text-align: start;
+                padding: 20px;
+                align-items: center;
+            }
+            .header h1 {
+                margin: 0;
+                margin-top: 30px;
+                font-size: 28px;
+            }
+            .content {
+                padding: 30px;
+                text-align: justify;
+                line-height: 1.8;
+            }
+            .content p {
+                color: #374151;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .button {
+                text-align: center;
+                margin: 20px 0;
+            }
+            .button a {
+                background-color: #708090;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 15px 30px; 
+                border-radius: 6px; 
+                font-size: 15px; 
+                display: inline-block;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+                transition: background-color 0.3s, transform 0.3s; 
+            }
+
+            .button a:hover {
+            background-color: #FAEBD7   ; 
+            transform: scale(1.05);
+            }
+
+            .footer {
+                background-color: #f3f4f6;
+                text-align: center;
+                padding: 20px;
+                font-size: 14px;
+                color: #6b7280;
+            }
+
+            .footer p {
+                margin: 0;
+                color: #6b7280;
+            }
+
+            .container {
+                border-top: 4px solid #708090;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>BienesRaices.com</h1>
+                <img width="100" height="100" src="https://img.icons8.com/isometric/100/real-estate.png" alt="real-estate"/>
+            </div>
+            <div class="content">
+                <p>Hola <strong>${name}</strong>, has solicitado restablecer tu password en BienesRaices.com</p>
+
+                <p>Sigue el siguiente enlace para generar un password nuevo: 
+                    <div class="button">
+                        <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/passwordRecovery/${token}" >Restablecer password</a> </p>
+                    </div>
+                </div>
+                <p style="text-align: center;">Si tu no solicitaste el cambio de password, puedes ignorar este email</p>
+            
+
+            <div>
+                <h3 style="text-align: center;">Atentamente</h3>
+            </div>
+            <div class="image">
+                <img src="https://xdddd.s3.us-east-2.amazonaws.com/firma.png" alt="firma" width="170px" height="140px">
+            </div>
+            <div>
+                <h4 style="text-align: center;">Fancisco Garcia Garcia</h4>
+                <h4 style="text-align: center;">CEO de Bienes Raices</h4>
+            </div>
+            <div class="footer">
+                <p>BienesRaices.com &copy; 2024. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        </div>
+    </body>
+    </html>`
+     })
+
+}
 export {
-    registerEmail
+    registerEmail,
+    emailChangePassword
 }

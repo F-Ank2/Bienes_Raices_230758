@@ -17,7 +17,7 @@ const  User = db.define('users', {
         allowNull: false
     },
     birthDate: { 
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: true, 
     },
 
@@ -29,6 +29,12 @@ const  User = db.define('users', {
         beforeCreate: async function (user) {
             const salt = await  bcrypt.genSalt(10)
             user.password = await bcrypt.hash(user.password, salt);
+        },
+        beforeUpdate: async function(user)
+        {
+            
+             const salt = await bcrypt.genSalt(10)  
+             user.password = await bcrypt.hash(user.password, salt);
         }
     }
 }) 
