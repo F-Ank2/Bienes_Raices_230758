@@ -5,7 +5,8 @@ import User from "../models/User.js";
 
 const formLogin = (req, res) => {
     res.render('auth/login', {
-        page: "Iniciar sesión"
+        page: "Iniciar sesión",
+        csrfToken: req.csrfToken(),
     });
 };
 
@@ -122,7 +123,7 @@ const confirmAccount = async (req, res) => {
         // Mostrar mensaje de confirmación
         res.render('auth/confirm_Account', {
             page: 'Cuenta Confirmada',
-            msg: 'La cuenta se confirmó correctamente. Ya puedes loguearte.',
+            msg: `La cuenta se confirmó correctamente. Ya puedes loguearte.`,
             error: false
         });
     } catch (error) {
@@ -192,7 +193,7 @@ const passwordReset = async(request, response) =>{
     response.render('templates/message', {
         csrfToken: request.csrfToken(),
         page: 'Solicitud de actualización de contraseña aceptada',
-        msg: 'Hemos enviado un correo a : <poner el correo aqui>, para la la actualización de tu contraseña.'
+        msg: `Se ha enviado un correo a ${email} para la recuperacion de la contraseña`
     })
 
 
@@ -263,7 +264,7 @@ const updatePassword = async (request, response) => {
 
         userTokenOwner.password = request.body.new_password;
         userTokenOwner.token = null;
-        await userTokenOwner.save(); // Save changes to the database
+        await userTokenOwner.save(); 
 
         // Renderizar la respuesta
         response.render('auth/confirm_Account', {

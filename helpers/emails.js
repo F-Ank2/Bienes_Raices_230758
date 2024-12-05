@@ -16,7 +16,7 @@ const registerEmail = async (data) => {
     await transport.sendMail({
         from: 'BienesRaices.com',
         to: email,
-        subject: 'Hola!, Confirma tu Cuente en BienesRacies.com',
+        subject: 'Hola!, Confirma tu Cuenta en BienesRacies.com',
         text: '¡Gracias por subscribirte a la comunidad de BienesRacices!',
         html:  `
         <!DOCTYPE html>
